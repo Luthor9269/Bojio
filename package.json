@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0-beta1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "jssha": "^3.2.0",
+    "method-override": "^3.0.0",
+    "node": "^17.7.2",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3"
+  },
+  "name": "volleyball-app",
+  "description": "Project for RA bootcamp. An app to increase ease of finding players for volleyball headcount as well as to grow the community.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luthor9269/volleyball-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luthor9269/volleyball-app/issues"
+  },
+  "homepage": "https://github.com/Luthor9269/volleyball-app#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-plugin-react": "^7.29.4"
+  }
+}

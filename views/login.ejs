@@ -1,0 +1,13 @@
+<%- include('./header'); -%>
+
+    <form action="/login" method="POST">
+      Email: <input type="text" name="email" />
+      <br />
+      Password: <input type="text" name="password" />
+      <br />
+      <input type="submit" value="Submit" />
+      <br />
+      <input type="button" value="Sign up" onclick="goToSignUp()" />
+    </form>
+
+ <%- include('./footer'); -%>
