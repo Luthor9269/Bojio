@@ -46,14 +46,15 @@ app.post('/login', (req,res)=>{
   const hash = shaObj.getHash('HEX');
   console.log("hash from req: " + hash);
   console.log("Email from req is : "+ req.body.email);
-  const sqlQuery = `Select "password" FROM "Users" WHERE "email"='${req.body.email}';`
+  const sqlQuery = `Select * FROM "Users" WHERE "Email"='${req.body.email}';`;
 
   pool.query(sqlQuery).then((results)=>{
-    if(hash===results.rows[0].password){
+    if(hash===results.rows[0].Password){
     console.log("This is the right password");
     res.cookie('login', 'TRUE');
-    const email = req.body.email;
-    res.render("./userPage", email);
+    const data = results.rows[0];
+    console.log(data);
+    res.render("./userPage", data);
     //access the cookies
     }else{
     console.log("Please key in the right password")
@@ -78,13 +79,13 @@ app.post('/signup', (req,res)=>{
   shaObj.update(password);
   const hash = shaObj.getHash('HEX');
 
-  const sqlQuery = `INSERT INTO "Users" ("name", "email", "password", "phone_number", "introduction" ) VALUES ( '${data.name}', '${data.email}', '${hash}', '${data.phone}', '${data.introduction}');`
+  const sqlQuery = `INSERT INTO "Users" ("Name", "Email", "Password", "Phone_Number", "Introduction" ) VALUES ( '${data.name}', '${data.email}', '${hash}', '${data.phone}', '${data.introduction}');`
 
   console.log('hashed text');
   console.log(hash);
   pool.query(sqlQuery).then((results)=>{
     console.log(results);
-    res.send(results);
+    res.render("./login");
   }).catch((err)=>{
     console.log("You got an error" + err);
   })
@@ -94,8 +95,54 @@ app.get('/userPage', (req,res)=>{
   res.render("./userPage");
 })
 
+app.get('/createGroup', (req,res)=>{
+  ///////////////take data and put into groups 
+  res.render("./createGroup");
+})
+
+app.post('/createGroup', (req,res)=>{
+  const data = req.body;
+  const sqlQuery = `SELECT "ID","Name" FROM "Users" WHERE "Email"='${data.email}';`
+  
+  pool.query(sqlQuery).then((results)=>{
+    console.log(results.rows[0].ID);
+    const sqlQuery2 =`INSERT INTO "Groups" ("Name", "Creator_ID", "Description") VALUES ('${data.name}', '${results.rows[0].ID}' ,'${data.introduction}') ;`
+    pool.query(sqlQuery2);
+  }).catch((err)=>{
+  if(err){
+    console.log("YOu got an error: " + err);
+  }
+});
+  res.send("data being sent to SQL")
+});
+
 app.get('/groups', (req,res)=>{
-  res.send("this is the group");
+  const sqlQuery = `SELECT * FROM "Groups" ;`
+
+  pool.query(sqlQuery).then((results)=>{  
+    const data = results.rows;
+    console.log(data);
+    console.log(data[0].Name);
+    res.render("./groups.ejs", {data});
+  }).catch((err)=>{
+      console.log("YOU got an " + err);
+  });
+});
+
+app.get('/groups/:index', (req,res)=>{
+  const sqlQuery = `SELECT * FROM "Groups" ;`
+  const {index} = req.params;
+  pool.query(sqlQuery).then((results)=>{  
+    const data = results.rows[index];
+    console.log(data);
+    res.render("./group.ejs", {data});
+  }).catch((err)=>{
+      console.log("YOU got an " + err);
+  });
+});
+
+app.get("/createListing", (req, res)=>{
+  res.render("./createListing");
 })
 
 app.listen(3004);

@@ -10,11 +10,11 @@
         <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
       </button>
       <span class="name mt-3"><Eleanor Pena></span>
-      <span class="idd"><%= Name %></span>
+      <span class="idd"><%= data.Name %></span>
       <div
         class="d-flex flex-row justify-content-center align-items-center gap-2"
       >
-        <span class="idd1"><%= Email %></span>
+        <span class="idd1"><%= data.Creator_ID %></span>
         <span><i class="fa fa-copy"></i></span>
       </div>
       <div
@@ -27,7 +27,7 @@
       </div>
       <div class="text mt-3">
         <span
-          ><%= Introduction %>
+          ><%= data.Description %>
         </span>
       </div>
       <div
@@ -39,11 +39,9 @@
         <span><i class="fa fa-linkedin"></i></span>
       </div>
       <div class="px-2 rounded mt-4 date">
-        <span class="join">Joined: <%= created_at %> </span>
+        <span class="join">Joined: <%= data.created_at %> </span>
       </div>
     </div>
   </div>
 </div>
-
 <%- include('./footer'); -%>
-

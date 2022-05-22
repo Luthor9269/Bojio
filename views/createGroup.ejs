@@ -1,62 +1,49 @@
 <%- include('./header'); -%>
 
-    <!-- This is the sign up form -->
-    <form action="/createListing" method="POST">
+<!-- This is the create group form -->
+    <form action="/createGroup" method="POST">
       <div class="container">
         <div class="col-md-6 mx-auto text-center">
           <div class="header-title">
-            <h1 class="wv-heading--title">Create a listing for your group!</h1>
-            <h2 class="wv-heading--subtitle">
-              Please provide the information below to create listing
-            </h2>
+            <h1 class="wv-heading--title">Create an iterest group right now!</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 mx-auto">
             <div class="myform form">
-              <form action="" method="post" name="login">
+              <form action="/createGroup" method="post" name="createGroup">
                 <div class="form-group">
                   <input
                     type="text"
                     name="name"
                     class="form-control my-input"
                     id="name"
-                    placeholder="Event Name"
+                    placeholder="Group Name"
                   />
                 </div>
                 <div class="form-group">
                   <input
-                    type="datetime-local"
-                    name="datetime"
+                    type="email"
+                    name="email"
                     class="form-control my-input"
-                    id="datetime"
-                    placeholder="Date and Time"
-                  />
-                </div>
-                <div class="form-group">
-                  <input
-                    type="TEXT"
-                    name="location"
-                    id="location"
-                    class="form-control my-input"
-                    placeholder="Location"
+                    id="email"
+                    placeholder="Creator's Email"
                   />
                 </div>
                 <div class="form-group">
                   <textarea
                     type="textarea"
-                    name="details" 
-                    id="details"
+                    name="introduction"
+                    id="introduction"
                     class="form-control my-input"
-                    placeholder="Event Details"
-                  >Event Details</textarea>
+                  >Introduction</textarea>
                 </div>
                 <div class="text-center">
                   <button
                     type="submit"
                     class="btn btn-block send-button tx-tfm btn-dark"
                   >
-                    Create Event
+                    Create Account
                   </button>
                 </div>
               </form>
