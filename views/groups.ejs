@@ -3,7 +3,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Group ID</th>
       <th scope="col">Group Name</th>
       <th scope="col">Creator</th>
       <th scope="col">Date Created</th>
@@ -13,14 +13,18 @@
   <tbody>
     <% data.forEach((element, index) => {%>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><%= data[index].ID %></th>
       <td><%= data[index].Name %></td>
       <td><%= data[index].Creator_ID %></td>
       <td><%= data[index].created_at %></td>
-      <td><button type="button" class="btn btn-secondary" onclick="">More Info</button></td>
+      <td><button type="button" class="btn btn-secondary" onclick="goToGroup('<%= data[index].ID %>')">More Info</button></td>
     </tr>
     <%});%>
   </tbody>
 </table>
+
+<div class="d-flex mt-2">
+        <button class="btn1 btn-dark " onclick="location.href='/createGroup'">Create Group</button>
+      </div>
 
 <%- include('./footer'); -%>

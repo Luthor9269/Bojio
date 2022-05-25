@@ -10,11 +10,11 @@
         <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
       </button>
       <span class="name mt-3"><Eleanor Pena></span>
-      <span class="idd"><%= data.Name %></span>
+      <span class="idd"><%= data.name %></span>
       <div
         class="d-flex flex-row justify-content-center align-items-center gap-2"
       >
-        <span class="idd1">Creator ID: <%= data.Creator_ID %></span>
+        <span class="idd1"><%= data.Creator_ID %></span>
         <span><i class="fa fa-copy"></i></span>
       </div>
       <div class="text mt-3">
@@ -31,25 +31,19 @@
         <span><i class="fa fa-linkedin"></i></span>
       </div>
       <div class="px-2 rounded mt-4 date">
-        <span class="join">Created: <%= data.created_at %> </span>
+        <span class="join">Posted: <%= data.created_at %> </span>
       </div>
       <div class="d-flex mt-2">
-        <button class="btn1 btn-dark" onclick="goToGroupEdit('<%= data.ID %>')" >Edit Group</button>
-      </div>
-
-      <div class="d-flex mt-2">
-        <button class="btn1 btn-dark" onclick="goToJoinGroup('<%= data.ID %>')" >Join Group</button>
-      </div>
-      <div class="d-flex mt-2">
-        <button class="btn1 btn-dark " onclick="location.href='/createListing'">Create Listing</button>
+        <button class="btn1 btn-dark" onclick="goToListingEdit('<%= data.ID %>')" >Edit Event</button>
       </div>
       <br>
-      <form action="/groups/<%= data.ID %>?_method=DELETE" method="POST">
-      <input type="submit" value="Delete Group" class="btn1 btn-dark " />
+      <form action="/listings/<%= data.ID %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete Event" class="btn1 btn-dark"/>
       </form>
     </div>
   </div>
 </div>
+
 
 
 <%- include('./footer'); -%>

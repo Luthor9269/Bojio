@@ -1,13 +1,13 @@
 <%- include('./header'); -%>
 
     <!-- This is the sign up form -->
-    <form action="/createListing" method="POST">
+    <form action="/listings/:ID/edit?_method=PUT" method="POST">
       <div class="container">
         <div class="col-md-6 mx-auto text-center">
           <div class="header-title">
-            <h1 class="wv-heading--title">Create a listing for your group!</h1>
+            <h1 class="wv-heading--title">Edit your Event</h1>
             <h2 class="wv-heading--subtitle">
-              Please provide the information below to create listing
+              Edit Event below
             </h2>
           </div>
         </div>
@@ -21,16 +21,18 @@
                     name="name"
                     class="form-control my-input"
                     id="name"
-                    placeholder="Event Name"
+                    placeholder="Name : <%= data.name %>"
                   />
                 </div>
                 <div class="form-group">
                   <input
-                    type="TEXT"
-                    name="groupName"
+                    type="number"
+                    name="listingid"
                     class="form-control my-input"
-                    id="groupName"
-                    placeholder="Group Name"
+                    id="listingid"
+                    placeholder= "<%= data.ID %>"
+                    value= "<%= data.ID %>"
+                    hidden
                   />
                 </div>
                 <div class="form-group">
@@ -39,7 +41,7 @@
                     name="date"
                     class="form-control my-input"
                     id="date"
-                    placeholder="Date"
+                    placeholder="Date: <%= data.Date %>"
                   />
                 </div>
                 <div class="form-group">
@@ -48,7 +50,7 @@
                     name="time"
                     class="form-control my-input"
                     id="time"
-                    placeholder="Time"
+                    placeholder="Time: <%= data.Time %>"
                   />
                 </div>
                 <div class="form-group">
@@ -57,7 +59,7 @@
                     name="location"
                     id="location"
                     class="form-control my-input"
-                    placeholder="Location"
+                    placeholder="Location: <%= data.Location %>"
                   />
                 </div>
                 <div class="form-group">
@@ -66,7 +68,7 @@
                     name="details" 
                     id="details"
                     class="form-control my-input"
-                    placeholder="Event Details"
+                    placeholder="Event Details: <%= data.Description %>"
                   ></textarea>
                 </div>
                 <div class="text-center">
@@ -74,7 +76,7 @@
                     type="submit"
                     class="btn btn-block send-button tx-tfm btn-dark"
                   >
-                    Create Event
+                    Edit Event
                   </button>
                 </div>
               </form>

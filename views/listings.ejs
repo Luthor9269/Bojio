@@ -1,0 +1,31 @@
+<%- include('./header'); -%>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Listing ID</th>
+      <th scope="col">Event Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Location</th>
+      <th scope="col">Description</th>
+       <th scope="col">Group ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach((element, index) => {%>
+    <tr>
+      <th scope="row"><%= data[index].ID %></th>
+      <td><%= data[index].name %></td>
+      <td><%= data[index].Date %></td>
+      <td><%= data[index].Time %></td>
+      <td><%= data[index].Location %></td>
+      <td><%= data[index].Description %></td>
+      <td><%= data[index].group_id %></td>
+      <td><button type="button" class="btn btn-secondary" onclick="goToListing('<%= data[index].ID %>')">More Info</button></td>
+    </tr>
+    <%});%>
+  </tbody>
+</table>
+<%- include('./footer'); -%>

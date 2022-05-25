@@ -1,24 +1,24 @@
 <%- include('./header'); -%>
 
-<!-- This is the create group form -->
-    <form action="/createGroup" method="POST">
+    <!-- This is the sign up form -->
+    <form action="/edituser?_method=PUT" method="POST">
       <div class="container">
         <div class="col-md-6 mx-auto text-center">
           <div class="header-title">
-            <h1 class="wv-heading--title">Create a group right now!</h1>
+            <h1 class="wv-heading--title">Edit your user information below</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 mx-auto">
             <div class="myform form">
-              <form action="/createGroup" method="post" name="createGroup">
+              <form action="" method="post" name="login">
                 <div class="form-group">
                   <input
                     type="text"
                     name="name"
                     class="form-control my-input"
                     id="name"
-                    placeholder="Group Name"
+                    placeholder="Name: <%= data.Name %> "
                   />
                 </div>
                 <div class="form-group">
@@ -27,23 +27,35 @@
                     name="email"
                     class="form-control my-input"
                     id="email"
-                    placeholder="Creator's Email"
+                    placeholder="Email: <%= data.Email %> "
                   />
                 </div>
                 <div class="form-group">
-                  <textarea
+                  <input
+                    type="number"
+                    min="0"
+                    name="phone"
+                    id="phone"
+                    class="form-control my-input"
+                    placeholder="Phone Number: <%= data.Phone_Number %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
                     type="textarea"
                     name="introduction"
                     id="introduction"
                     class="form-control my-input"
-                  >Introduction</textarea>
+                    placeholder=" Introductions: <%= data.Introduction %>"
+                    
+                  />
                 </div>
                 <div class="text-center">
                   <button
                     type="submit"
                     class="btn btn-block send-button tx-tfm btn-dark"
                   >
-                    Create Group
+                    Edit User
                   </button>
                 </div>
               </form>

@@ -10,6 +10,28 @@
       function goToSignUp() {
         window.location.assign("/signup");
       }
+
+      function goToGroup(ID){
+        console.log(ID);
+        window.location.assign(`/groups/${ID}`)
+      }
+      function goToListing(ID){
+        console.log(ID);
+        window.location.assign(`/listings/${ID}`)
+      }
+      function goToGroupEdit(ID){
+        console.log(ID);
+        window.location.assign(`/groups/${ID}/edit`)
+      }
+      function goToListingEdit(ID){
+        console.log(ID);
+        window.location.assign(`/listings/${ID}/edit`)
+      }
+      function goToJoinGroup(ID){
+        console.log(ID)
+        window.location.assign(`/groups/${ID}/join`)
+      }
+
     </script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -21,7 +43,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand"  href="#"> <img src="/bojio.jpg" width="30" height="30" />BOJIO!</a>
+        <a class="navbar-brand"  href="#"> <img src="/bojio.jpg" width="50" height="50" />BOJIO!</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,14 +61,17 @@
               <a class="nav-link active" aria-current="page" href="/userPage">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Groups</a>
+              <a class="nav-link active" href="/groups">Groups</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Events</a>
+              <a class="nav-link active" href="/listings">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/logout">LogOut</a>
             </li>
 
             <!--Below are the drop down and disabled and search bar buttons to be used in the future-->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown ">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -54,10 +79,11 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                hidden="true"
               >
                 Dropdown
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
                 <li><a class="dropdown-item" href="#">Listings</a></li>
                 <li><a class="dropdown-item" href="#">Groups</a></li>
                 <li><hr class="dropdown-divider" /></li>
@@ -68,6 +94,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+              hidden="true"
                 >Disabled</a
               >
             </li>
@@ -78,8 +105,9 @@
               type="search"
               placeholder="Search"
               aria-label="Search"
+              hidden="true"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-success" type="submit" hidden="true">
               Search
             </button>
           </form>
