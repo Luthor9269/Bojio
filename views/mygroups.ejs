@@ -1,0 +1,26 @@
+<%- include('./header'); -%>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Group ID</th>
+      <th scope="col">Group Name</th>
+      <th scope="col">Creator</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Events</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data2.forEach((element, index) => {%>
+    <tr>
+      <th scope="row"><%= data2[index].ID %></th>
+      <td><%= data2[index].Name %></td>
+      <td><%= data2[index].Creator_ID %></td>
+      <td><%= data2[index].created_at %></td>
+      <td><button type="button" class="btn btn-secondary" onclick="goToGroup('<%= data2[index].ID %>')">More Info</button></td>
+    </tr>
+    <%});%>
+  </tbody>
+</table>
+
+<%- include('./footer'); -%>

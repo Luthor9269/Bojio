@@ -196,6 +196,7 @@ app.get('/groups', (req,res)=>{
 
   pool.query(sqlQuery).then((results)=>{  
     const data = results.rows;
+    console.log(data);
     res.render("./groups.ejs", {data});
   }).catch((err)=>{
       console.log("YOU got an " + err);
@@ -374,6 +375,32 @@ app.delete('/listings/:ID', (req,res)=>{
       console.log("You got an " + err);
   });
 });
+
+
+app.get('/mygroups', (req,res)=>{
+  const userID = req.cookies.ID;
+  const sqlQuery = `SELECT "Group_id" FROM "Users_Groups" WHERE "User_id"=${userID};`
+  const groupIDs = [];
+  //change into a string 
+  pool.query(sqlQuery).then((results)=>{
+    const data = results.rows;
+    data.forEach((element)=>{
+    groupIDs.push(element.Group_id);
+    console.log(groupIDs);
+    })
+  }).then(()=>{
+      const queryString = groupIDs.toString();
+      console.log(queryString);
+      const sqlQuery2=`SELECT * FROM "Groups" WHERE "ID" IN (${queryString});`
+      pool.query(sqlQuery2).then((results)=>{
+        const data2 = results.rows;
+        console.log(data2);
+        res.render('./mygroups', {data2});
+      });
+    }).catch((err)=>{
+      console.log("You got an " + err);
+  });
+})
 
 app.listen(3005);
 
